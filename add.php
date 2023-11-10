@@ -57,7 +57,7 @@ include "header.php";
         <option value="easy">Facile</option>
         <option value="medium">Moyen</option>
         <option value="hard">Difficile</option>
-        <option value="impossible">Père Fourras</option>
+        <option value="impossible">Père Fouras</option>
     </select>
   </div>
   <!-- <div class="mb-3">
