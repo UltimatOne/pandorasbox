@@ -6,7 +6,7 @@ session_start();
 if (!isset($_SESSION['enigmes'])){
     $_SESSION["enigmes"] = [];
 }
-var_dump($_SESSION);
+//var_dump($_SESSION);
 
 $msgSuccess = "";
 $msgAlert = "";
@@ -38,7 +38,7 @@ $msgAlert = "";
                             <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="liste.php">Liste des énigmes</a>
+                            <a class="nav-link" href="list.php">Liste des énigmes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="add.php">Ajouter une énigme</a>
