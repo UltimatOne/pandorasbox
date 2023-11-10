@@ -2,10 +2,11 @@
 session_start();
 
 // session_destroy();
-// if (!isset($_SESSION['user'])){
-//     $_SESSION["user"] = [];
-// }
-// var_dump($_SESSION);
+
+if (!isset($_SESSION['enigmes'])){
+    $_SESSION["enigmes"] = [];
+}
+var_dump($_SESSION);
 
 $msgSuccess = "";
 $msgAlert = "";
