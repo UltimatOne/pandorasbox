@@ -35,7 +35,7 @@ include("HEADER.php");
         <p class="card-text">
           <?= $value["description"] ?>
         </p>
-        <a href="jeu.php?id=<?php $key ?>" class="card-link">Résoudre l'énigme</a>
+        <a href="jeu.php?id=<?= $key ?>" class="card-link">Résoudre l'énigme</a>
       </div>
     </div>
 
