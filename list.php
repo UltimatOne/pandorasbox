@@ -6,7 +6,7 @@ include("HEADER.php");
 <h1 style="text-align:center; margin:20px">Liste des énigmes</h1>
 
 <h3 style="text-align:center; margin: 20px ">Filtrer par niveaux de difficultés :</h3>
-<div style="margin: auto; width : 60%; display:flex; justify-content: space-around;">
+<div style="margin: 20px auto; width : 60%; display:flex; justify-content: space-around;">
 
   <a type="button" class="btn btn-success" href="list.php?filtre=easy">Facile</a>
   <a type="button" class="btn btn-primary" href="list.php?filtre=medium">Moyenne</a>
@@ -14,7 +14,7 @@ include("HEADER.php");
   <a type="button" class="btn btn-danger" href="list.php?filtre=impossible">Père Fourras</a>
   <a type="button" class="btn btn-secondary" href="list.php">Toutes les difficultés</a>
 </div>
-
+<div style="display:flex; flex-wrap:wrap">
 <?php foreach ($_SESSION["enigmes"] as $key => $value) { ?>
 
   <?php
@@ -23,21 +23,22 @@ include("HEADER.php");
     !isset($_GET["filtre"])
   ) {
     ?>
-
-    <div class="card" style="width: 18rem;">
+  
+    <div style="margin-left:15px" class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">
-          <?php $value["titre"] ?>
+          <?= $value["titre"] ?>
         </h5>
         <h6 class="card-subtitle mb-2 text-body-secondary">
-          <?php $value["difficulty"] ?>
+          <?= $value["difficulty"] ?>
         </h6>
         <p class="card-text">
-          <?php $value["description"] ?>
+          <?= $value["description"] ?>
         </p>
-        <a href="jeu.php?id=<?php $key ?>" class="card-link">Résoudre l'énigme</a>
+        <a href="jeu.php?id=<?= $key ?>" class="card-link">Résoudre l'énigme</a>
       </div>
     </div>
 
   <?php }
 } ?>
+</div>
