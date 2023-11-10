@@ -6,7 +6,8 @@ session_start();
 if (!isset($_SESSION['enigmes'])){
     $_SESSION["enigmes"] = [];
 }
-//// var_dump($_SESSION);
+
+// var_dump($_SESSION);
 
 $msgSuccess = "";
 $msgAlert = "";
