@@ -18,18 +18,25 @@ if (isset($_GET["id"])){
 //Verifie le niveau de diffulté et set dans $difficulty le mot en francais
 if ($_SESSION["enigmes"][$id]["difficulty"] == "easy"){
     $difficulty = "FACILE";
+    $background = "https://o.fortboyard.tv/photos/photo_2734.jpg";
+    $color = "success";
 };
 if ($_SESSION["enigmes"][$id]["difficulty"] == "medium"){
     $difficulty = "NORMAL";
+    $background = "https://o.fortboyard.tv/photos/photo_3704.jpg";
+    $color = "primary";
 };
 if ($_SESSION["enigmes"][$id]["difficulty"] == "hard"){
     $difficulty = "DIFFICILE";
+    $background = "https://o.fortboyard.tv/photos/photo_2736.jpg";
+    $color = "warning";
 };
 if ($_SESSION["enigmes"][$id]["difficulty"] == "impossible"){
-    $difficulty = "PÈRE FOURRAS";
+    $difficulty = "PÈRE FOURAS";
+    $background = "https://o.fortboyard.tv/photos/photo_2722.jpg";
+    $color = "danger";
 };
 
-$win = $_SESSION["enigmes"][$id]["win"];
 // var_dump($_SESSION);
 // var_dump($_SESSION["enigmes"]);
 // var_dump($_SESSION["enigmes"][$_GET["id"]]["win"]);
@@ -67,24 +74,21 @@ shuffle($buttons);
 //Verifie qu'un id existe, si oui affiche l'énigme correspondante depuis $enigmes sinon message d'erreur
 if (isset($id)) {
     $enigme = $_SESSION["enigmes"][$id];
-    $contenu = "<div class='container w-25 d-flex flex-wrap justify-content-around bg-dark text-white my-5 rounded-5'>
+    $contenu = "<div class='container w-25 d-flex flex-wrap justify-content-around bg-dark bg-opacity-75 text-white rounded-5 mb-4'>
                     <h1 class='text-center'>" . $enigme["titre"] . "</h1>
                 </div>
-                <div class='container w-25 d-flex flex-wrap justify-content-around mb-4'>
-                    <h4 class='text-center'>Niveau de difficulté: " . $difficulty . "</h4>
+                <div class='container w-25 d-flex flex-wrap justify-content-center align-items-center mb-4 text-light'>
+                    <h4 class='fw-bold bg-$color bg-opacity-75 rounded-5 p-2'>" . $difficulty . "</h4>
                 </div>
-                <div class='container w-25 d-flex flex-wrap justify-content-around mb-4'>
-                    <p class='text-center'>Victoires: " . $win . " fois</p>
-                </div>
-                <div class='container d-flex flex-wrap flex-column justify-content-around bg-dark text-white mb-4 rounded-5'>
-                    <div class='container-fluid d-flex w-50 p-3 m-auto justify-content-center align-items-center' style='height: 200px;''>
+                <div class='w-50 d-flex flex-column justify-content-around bg-dark bg-opacity-75 text-white mb-4 rounded-5'>
+                    <div class='container-fluid d-flex w-50 m-auto justify-content-center align-items-center' style='height: 200px;''>
                         <p class='m-auto'>" . $enigme["description"] . "</p>
                     </div>
-                    <div class='container-fluid d-flex w-25 m-auto justify-content-center align-items-center bg-light text-dark mb-4 rounded-5'>
+                    <div class='container-fluid d-flex w-50 m-auto justify-content-center align-items-center bg-light bg-opacity-75 text-dark mb-4 rounded-5'>
                         <p class='m-auto fs-4 fw-bold'>Choisissez une Réponse :</p>
                     </div>
                 </div>
-                <div class='container d-flex w-50 flex-wrap justify-content-around bg-dark text-white mb-4 rounded-5'>
+                <div class='container d-flex w-50 flex-wrap justify-content-around bg-dark text-white mb-4 rounded-5 bg-opacity-75'>
                     $buttons[0]
                     $buttons[1]
                     $buttons[2]
@@ -122,7 +126,7 @@ if (isset($_GET["resp"]) && $_GET["resp"] == $response1) {
 };
 ?>
 
-<main class="">
+<main class="bg-image d-flex flex-column justify-content-center align-items-center" style="background-image: url(<?= $background ?>); height: 94.2vh">
 
     <?php
     //Verifie qu'il y a bien une enigme dans contenu et l'affiche sinon affiche un message d'erreur
