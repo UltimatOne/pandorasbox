@@ -129,13 +129,26 @@ $_SESSION["enigmes"] = [
                                              || représente le mur séparant Alice des autres (elle ne peut pas les voir et inversement).
                                              Alice ne peut regarder que vers la droite. Béatrice, Chloé et Dorothée ne peuvent regarder que vers la gauche.
                                              Alice et Béatrice ne peuvent voir personne. Chloé voit Béatrice alors que Dorothée voit Béatrice et Chloé.',
-      'difficulty' => 'impossible',
-      'falseResponse1' => 'Alice',
-      'falseResponse2' => 'Béatrice',
-      'falseResponse3' => 'Dorothée',
-      'correctResponse' => 'Chloé',
-      'lose' => 0,
-      'win' => 0
-   ],
-
-];
+                                             'difficulty' => 'impossible',
+                                             'falseResponse1' => 'Alice',
+                                             'falseResponse2' => 'Béatrice',
+                                             'falseResponse3' => 'Dorothée',
+                                             'correctResponse' => 'Chloé',
+                                             'lose' => 0, 
+                                             'win' => 0
+                                             ],
+                                             '11' => [
+                                                'titre' => 'Énigme de la porte verrouillée',
+                                                'description' => '3 aventuriers arrivent dans une pièce souterraine, dans les profondeurs d’un temple. La pièce est éclairée seulement par deux torches finement détaillée.
+                                                Au fond de la pièce se trouve une porte en fer verrouillé possédent deux serrures. Une instruction est gravée au-dessus de cette dernière : "La lumière est la clé".
+                                                Cependant, peut importe le temp passé avec leurs lampes torches braquées sur la porte et ce peut importe l’intensité de ces lampes torches, la porte reste fermée. Pourquoi ?',
+                                                'difficulty' => 'impossible',
+                                                'falseResponse1' => 'La porte ne réagi qu’à la lumière du soleil',
+                                                'falseResponse2' => 'Il faut enflammer la porte',
+                                                'falseResponse3' => 'Il faut fournir de l’électricité à la porte',
+                                                'correctResponse' => 'Les torches sont les clés de la porte',
+                                                'lose' => 0, 
+                                                'win' => 0
+                                                ],
+                           ];
+?>
