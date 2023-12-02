@@ -10,28 +10,28 @@ include 'header.php';
 // var_dump($_GET['id']);
 
 //Verifie si id existe dans get ou post et le set dans $id
-if (isset($_GET["id"])){
+if (isset($_GET["id"])) {
     $id = $_GET["id"];
 } else if (isset($_POST["id"])) {
     $id = $_POST["id"];
 };
 //Verifie le niveau de diffulté et set dans $difficulty le mot en francais
-if ($_SESSION["enigmes"][$id]["difficulty"] == "easy"){
+if ($_SESSION["enigmes"][$id]["difficulty"] == "easy") {
     $difficulty = "FACILE";
     $background = "https://o.fortboyard.tv/photos/photo_2734.jpg";
     $color = "success";
 };
-if ($_SESSION["enigmes"][$id]["difficulty"] == "medium"){
-    $difficulty = "NORMAL";
+if ($_SESSION["enigmes"][$id]["difficulty"] == "medium") {
+    $difficulty = "MOYENNE";
     $background = "https://o.fortboyard.tv/photos/photo_3704.jpg";
     $color = "primary";
 };
-if ($_SESSION["enigmes"][$id]["difficulty"] == "hard"){
+if ($_SESSION["enigmes"][$id]["difficulty"] == "hard") {
     $difficulty = "DIFFICILE";
     $background = "https://o.fortboyard.tv/photos/photo_2736.jpg";
     $color = "warning";
 };
-if ($_SESSION["enigmes"][$id]["difficulty"] == "impossible"){
+if ($_SESSION["enigmes"][$id]["difficulty"] == "impossible") {
     $difficulty = "PÈRE FOURAS";
     $background = "https://o.fortboyard.tv/photos/photo_2722.jpg";
     $color = "danger";
@@ -59,15 +59,17 @@ $response3 = $_SESSION["enigmes"][$id]["falseResponse2"];
 $response4 = $_SESSION["enigmes"][$id]["falseResponse3"];
 
 //Couleurs des boutons
-$buttonsColors = ["danger","secondary","primary","success"];
+$buttonsColors = ["danger", "secondary", "primary", "success"];
 //Pour changer la couleur des boutons aleatoirement
 shuffle($buttonsColors);
 
 //Boutons pour jouer
-$buttons = ["<a type='button' class='btn btn-$buttonsColors[0] m-2 d-flex justify-content-center align-items-center' style='width: 20%;' href='jeu.php?resp=" . $response1 . "&id=" . $id . "'>$response1</a>", 
-            "<a type='button' class='btn btn-$buttonsColors[1] m-2 d-flex justify-content-center align-items-center' style='width: 20%;' href='jeu.php?resp=" . $response2 . "&id=" . $id . "'>$response2</a>", 
-            "<a type='button' class='btn btn-$buttonsColors[2] m-2 d-flex justify-content-center align-items-center' style='width: 20%;' href='jeu.php?resp=" . $response3 . "&id=" . $id . "'>$response3</a>", 
-            "<a type='button' class='btn btn-$buttonsColors[3] m-2 d-flex justify-content-center align-items-center' style='width: 20%;' href='jeu.php?resp=" . $response4 . "&id=" . $id . "'>$response4</a>"];
+$buttons = [
+    "<a type='button' class='btn btn-$buttonsColors[0] m-2 d-flex justify-content-center align-items-center' style='width: 20%;' href='jeu.php?resp=" . $response1 . "&id=" . $id . "'>$response1</a>",
+    "<a type='button' class='btn btn-$buttonsColors[1] m-2 d-flex justify-content-center align-items-center' style='width: 20%;' href='jeu.php?resp=" . $response2 . "&id=" . $id . "'>$response2</a>",
+    "<a type='button' class='btn btn-$buttonsColors[2] m-2 d-flex justify-content-center align-items-center' style='width: 20%;' href='jeu.php?resp=" . $response3 . "&id=" . $id . "'>$response3</a>",
+    "<a type='button' class='btn btn-$buttonsColors[3] m-2 d-flex justify-content-center align-items-center' style='width: 20%;' href='jeu.php?resp=" . $response4 . "&id=" . $id . "'>$response4</a>"
+];
 //pour changer l'ordre des boutons aléatoirement
 shuffle($buttons);
 
@@ -102,7 +104,7 @@ if (isset($id)) {
 if (isset($_GET["resp"]) && $_GET["resp"] == $response1) {
     //verifie que win existe et incremente de 1 sinon le cree à 1
     if (isset($_SESSION["enigmes"][$id]["win"])) {
-        $_SESSION["enigmes"][$id]["win"] ++ ;
+        $_SESSION["enigmes"][$id]["win"]++;
     } else {
         $_SESSION["enigmes"][$id]["win"] = 1;
     };
@@ -111,9 +113,9 @@ if (isset($_GET["resp"]) && $_GET["resp"] == $response1) {
                     <a type='button' class='btn btn-light m-2' href='list.php'>Retour aux énigmes</a>
                   </div>";
 } else if (isset($_GET["resp"]) && $_GET["resp"] !== $response1) {
-     //verifie que lose existe et incremente de 1 sinon le cree à 1
+    //verifie que lose existe et incremente de 1 sinon le cree à 1
     if (isset($_SESSION["enigmes"][$id]["lose"])) {
-        $_SESSION["enigmes"][$id]["lose"] ++ ;
+        $_SESSION["enigmes"][$id]["lose"]++;
     } else {
         $_SESSION["enigmes"][$id]["lose"] = 1;
     };
@@ -126,25 +128,25 @@ if (isset($_GET["resp"]) && $_GET["resp"] == $response1) {
 };
 ?>
 
-<main class="bg-image d-flex flex-column justify-content-center align-items-center" style="background-image: url(<?= $background ?>); height: 94.2vh; position: relative;">
+<main class="d-flex flex-column justify-content-center align-items-center" style="background-image: url(<?= $background ?>); height: 94.2vh; position: relative;">
 
     <?php
     //Verifie qu'il y a bien une enigme dans contenu et l'affiche sinon affiche un message d'erreur
     if (!empty($contenu)) {
         echo $contenu;
         if (!empty($msgSuccess) or !empty($msgError)) {
-        echo "<div class='bg-dark bg-opacity-50 d-flex justify-content-center align-items-center' style='position: absolute; z-index: 10; top: 0; bottom: 0; left: 0; right: 0;'>
+            echo "<div class='bg-dark bg-opacity-50 d-flex justify-content-center align-items-center' style='position: absolute; z-index: 10; top: 0; bottom: 0; left: 0; right: 0;'>
                 <div class='w-25' style=''>";
-                    include("box.php");
-        echo   "</div>
+            include("box.php");
+            echo   "</div>
               </div>";
-            }
+        }
     } else {
         if (!empty($msgSuccess) or !empty($msgError)) {
-        echo "<div class='bg-dark bg-opacity-50 d-flex justify-content-center align-items-center' style='position: absolute; z-index: 10; top: 0; bottom: 0; left: 0; right: 0;'>
+            echo "<div class='bg-dark bg-opacity-50 d-flex justify-content-center align-items-center' style='position: absolute; z-index: 10; top: 0; bottom: 0; left: 0; right: 0;'>
                 <div class='w-25'>";
-                    include("box.php");
-        echo   "</div>
+            include("box.php");
+            echo   "</div>
             </div>";
         }
     }
