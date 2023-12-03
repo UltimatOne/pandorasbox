@@ -4,7 +4,7 @@ session_start();
 // session_destroy();
 
 if (!isset($_SESSION['enigmes'])){
-    $_SESSION["enigmes"] = [];
+   include 'mokSession.php';
 }
 
 // var_dump($_SESSION);
