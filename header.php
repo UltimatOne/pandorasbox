@@ -1,11 +1,20 @@
 <?php
 session_start();
+include 'bddpass.php';
+
+try {
+
+    $db = new PDO("mysql:host=$host; dbname=$dbname; charset=utf8", $username, $pswrd, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+} catch (Exception $e) {
+
+    var_dump($e->getMessage());
+}
 
 // session_destroy();
 
-if (!isset($_SESSION['enigmes'])){
-   include 'mokSession.php';
-}
+// if (!isset($_SESSION['enigmes'])){
+//    include 'mokSession.php';
+// }
 
 // var_dump($_SESSION);
 
