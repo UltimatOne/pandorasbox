@@ -1,6 +1,8 @@
 <?php
 include "header.php";
 
+
+include 'getCorrectResponsesSelectFromBdd.php';
 ?>
 
 <form class="container" action="valid.php" method="post">
@@ -51,6 +53,12 @@ include "header.php";
   <div>
    <input type="text" name = "correctResponse">
   </div>
+  <label for=""></label>
+  <select class="form-control" name="enigme_correctResponse" id="enigme_correctResponse">
+            <?php foreach ($correctResponsesSelect as $correctResponseSelect) {
+                echo "<option value='{$correctResponseSelect}'>{$correctResponseSelect}</option>";
+            } ?>
+        </select>
   <button type="submit" >Poster l'énigme</button>
   </form>
 <?php

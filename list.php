@@ -1,7 +1,13 @@
 <?php
-include("HEADER.php");
+include 'HEADER.php';
+
+
+
+include 'getEnigmesFromBdd.php';
 
 ?>
+
+
 
 <h1 style="text-align:center; margin:20px">Liste des énigmes</h1>
 
@@ -15,11 +21,11 @@ include("HEADER.php");
   <a type="button" class="btn btn-secondary" href="list.php">Toutes les difficultés</a>
 </div>
 <div style="display:flex; flex-wrap:wrap">
-<?php foreach ($_SESSION["enigmes"] as $key => $value) { ?>
+<?php foreach ($enigmes as $key => $enigme) { ?>
 
   <?php
   if (
-    (isset($_GET["filtre"]) && $_GET["filtre"] === $value["difficulty"]) ||
+    (isset($_GET["filtre"]) && $_GET["filtre"] === $enigme["difficulty"]) ||
     !isset($_GET["filtre"])
   ) {
     ?>
@@ -27,13 +33,13 @@ include("HEADER.php");
     <div style="margin-left:15px" class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">
-          <?= $value["titre"] ?>
+          <?= $enigme["titre"] ?>
         </h5>
         <h6 class="card-subtitle mb-2 text-body-secondary">
-          <?= $value["difficulty"] ?>
+          <?= $enigme["difficulty"] ?>
         </h6>
         <p class="card-text">
-          <?= $value["description"] ?>
+          <?= $enigme["description"] ?>
         </p>
         <a href="jeu.php?id=<?= $key ?>" class="card-link">Résoudre l'énigme</a>
       </div>
