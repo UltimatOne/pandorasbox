@@ -25,7 +25,7 @@ include 'getEnigmesFromBdd.php';
 
   <?php
   if (
-    (isset($_GET["filtre"]) && $_GET["filtre"] === $enigme["difficulty"]) ||
+    (isset($_GET["filtre"]) && $_GET["filtre"] === $enigme["enigme_difficulty"]) ||
     !isset($_GET["filtre"])
   ) {
     ?>
@@ -33,13 +33,13 @@ include 'getEnigmesFromBdd.php';
     <div style="margin-left:15px" class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">
-          <?= $enigme["titre"] ?>
+          <?= $enigme["enigme_title"] ?>
         </h5>
         <h6 class="card-subtitle mb-2 text-body-secondary">
-          <?= $enigme["difficulty"] ?>
+          <?= $enigme["enigme_difficulty"] ?>
         </h6>
         <p class="card-text">
-          <?= $enigme["description"] ?>
+          <?= $enigme["enigme_description"] ?>
         </p>
         <a href="jeu.php?id=<?= $key ?>" class="card-link">Résoudre l'énigme</a>
       </div>

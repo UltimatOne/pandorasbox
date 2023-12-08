@@ -1,11 +1,11 @@
 <?php
 include "header.php";
 
-
+include 'addEnigmeIntoBdd.php';
 include 'getCorrectResponsesSelectFromBdd.php';
 ?>
 
-<form class="container w-25 bg-dark text-center mt-5 rounded-5 py-2 text-white fw-bold" action="valid.php" method="post">
+<form class="container w-25 bg-dark text-center mt-5 rounded-5 py-2 text-white fw-bold" action="" method="post">
   <div class="d-flex flex-column w-75 mx-auto">
     <label for="enigme_title">Titre de l'énigme</label>
     <input type="text" name="enigme_title">
@@ -26,7 +26,7 @@ include 'getCorrectResponsesSelectFromBdd.php';
   </div>
   <div class="d-flex flex-column w-75 mx-auto">
     <label for="enigme_response1">réponse 1</label>
-    <input type="text" name="response1">
+    <input type="text" name="enigme_response1">
   </div>
   <div class="d-flex flex-column w-75 mx-auto">
     <label for="enigme_response2">réponse 2</label>
@@ -52,5 +52,6 @@ include 'getCorrectResponsesSelectFromBdd.php';
   <button type="submit" class="btn btn-dark my-2">Ajouter l'énigme</button>
 </form>
 <?php
+include 'box.php';
 include "footer.php";
 ?>
