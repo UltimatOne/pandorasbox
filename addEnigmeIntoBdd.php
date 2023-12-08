@@ -1,5 +1,4 @@
 <?php
-var_dump($_POST);
 //Valide l'ajout d'une énigme à la tab enigmes de la Bdd pandorasbox
 if (isset($_POST['enigme_title']) && isset($_POST['enigme_description'])) {
     if (

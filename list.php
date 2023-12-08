@@ -1,8 +1,6 @@
 <?php
 include 'HEADER.php';
 
-
-
 include 'getEnigmesFromBdd.php';
 
 ?>
@@ -20,28 +18,45 @@ include 'getEnigmesFromBdd.php';
   <a type="button" class="btn btn-danger" href="list.php?filtre=impossible" style="width: 18%">Père Fourras</a>
   <a type="button" class="btn btn-secondary" href="list.php">Toutes les difficultés</a>
 </div>
-<div style="display:flex; flex-wrap:wrap">
+<div class="d-flex flex-wrap justify-content-evenly">
 <?php foreach ($enigmes as $key => $enigme) { ?>
 
   <?php
+  //Verifie le niveau de diffulté et set dans $difficulty le mot en francais
+  if ($enigme["enigme_difficulty"] == "easy") {
+    $difficulty = "Facile";
+    $color = "success";
+  };
+  if ($enigme["enigme_difficulty"] == "medium") {
+    $difficulty = "Moyenne";
+    $color = "primary";
+  };
+  if ($enigme["enigme_difficulty"] == "hard") {
+    $difficulty = "Difficile";
+    $color = "warning";
+  };
+  if ($enigme["enigme_difficulty"] == "impossible") {
+    $difficulty = "Père Fouras";
+    $color = "danger";
+  };
   if (
     (isset($_GET["filtre"]) && $_GET["filtre"] === $enigme["enigme_difficulty"]) ||
     !isset($_GET["filtre"])
   ) {
     ?>
   
-    <div style="margin-left:15px" class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">
+    <div class="card mt-3" style="width: 24%;">
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title text-center">
           <?= $enigme["enigme_title"] ?>
         </h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">
-          <?= $enigme["enigme_difficulty"] ?>
+        <h6 class="card-subtitle my-2 bg-<?= $color ?> w-25 p-2 text-white fw-bold text-center rounded-2">
+          <?= $difficulty ?>
         </h6>
-        <p class="card-text">
+        <p class="card-text my-auto">
           <?= $enigme["enigme_description"] ?>
         </p>
-        <a href="jeu.php?id=<?= $key ?>" class="card-link">Résoudre l'énigme</a>
+        <a class="card-link text-end mt-auto"href="jeu.php?id=<?= $key ?>">Résoudre l'énigme</a>
       </div>
     </div>
 
