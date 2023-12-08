@@ -7,7 +7,7 @@ $_SESSION["enigmes"] = [
       'falseResponse1' => 'Un lampadaire',
       'falseResponse2' => 'Le ciel',
       'falseResponse3' => 'Une montgolfière',
-      'correctResponse' => 'Un champignom',
+      'correctResponse' => 'Un champignon',
       'lose' => 0,
       'win' => 0
    ],

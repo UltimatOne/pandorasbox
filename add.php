@@ -5,62 +5,52 @@ include "header.php";
 include 'getCorrectResponsesSelectFromBdd.php';
 ?>
 
-<form class="container" action="valid.php" method="post">
-  <label for="titre">Titre de l'énigme</label>
-  <input type="text" name = "titre">
-  <div>
-    <label for="description" class="form-label">Énoncé de l'énigme</label>
-</div>
-<div class="mb-3">
-    <textarea name="description" cols="80" rows="10"></textarea>
+<form class="container w-25 bg-dark text-center mt-5 rounded-5 py-2 text-white fw-bold" action="valid.php" method="post">
+  <div class="d-flex flex-column w-75 mx-auto">
+    <label for="enigme_title">Titre de l'énigme</label>
+    <input type="text" name="enigme_title">
   </div>
-  <div>
-        <label for="difficulty">Niveau de difficultée</label>
+  <div class="d-flex flex-column w-75 mx-auto">
+    <label for="enigme_description" class="form-label">Énoncé de l'énigme</label>
+    <textarea name="enigme_description" cols="80" rows="10"></textarea>
   </div>
-  <div>
-    <select name="difficulty" id="">
-        <option value="easy">Facile</option>
-        <option value="medium">Moyen</option>
-        <option value="hard">Difficile</option>
-        <option value="impossible">Père Fouras</option>
+  <div class="d-flex flex-column w-75 mx-auto">
+    <label for="enigme_difficulty">Niveau de difficulté</label>
+    <select class="form-control" name="enigme_difficulty">
+      <option value="">-----------</option>
+      <option value="easy">Facile</option>
+      <option value="medium">Moyen</option>
+      <option value="hard">Difficile</option>
+      <option value="impossible">Père Fouras</option>
     </select>
   </div>
-  <!-- <div class="mb-3">
-    <label for="falseResponse1" class="form-label">Réponse 1</label>
-    <input type="texte" class="form-control" name = "falseResponse1">
-  </div> -->
-  <div>
-        <label for="falseResponse1">Mauvaise réponse</label>
+  <div class="d-flex flex-column w-75 mx-auto">
+    <label for="enigme_response1">réponse 1</label>
+    <input type="text" name="response1">
   </div>
-  <div>
-    <input type="text" name = "falseResponse1">
+  <div class="d-flex flex-column w-75 mx-auto">
+    <label for="enigme_response2">réponse 2</label>
+    <input type="text" name="enigme_response2">
   </div>
-  <div>
-        <label for="falseResponse2">Mauvaise réponse</label>
+  <div class="d-flex flex-column w-75 mx-auto">
+    <label for="enigme_response3">réponse 3</label>
+    <input type="text" name="enigme_response3">
   </div>
-  <div>
-    <input type="text" name = "falseResponse2">
+  <div class="d-flex flex-column w-75 mx-auto">
+    <label for="enigme_response4">réponse 4</label>
+    <input type="text" name="enigme_response4">
   </div>
-  <div>
-        <label for="falseResponse3">Mauvaise réponse</label>
+  <div class="d-flex flex-column w-75 mx-auto">
+    <label for="enigme_correctResponse">réponse correcte:</label>
+    <select class="form-control" name="enigme_correctResponse">
+      <option value="">---------</option>
+      <?php foreach ($correctResponsesSelect as $correctResponseSelect) {
+        echo "<option value='{$correctResponseSelect['correctResponse']}'>{$correctResponseSelect['correctResponse']}</option>";
+      } ?>
+    </select>
   </div>
-  <div>
-    <input type="text" name = "falseResponse3">
-  </div>
-  <div>
-  <label for="correctResponse">Bonne réponse</label>
-  </div>
-  <div>
-   <input type="text" name = "correctResponse">
-  </div>
-  <label for=""></label>
-  <select class="form-control" name="enigme_correctResponse" id="enigme_correctResponse">
-            <?php foreach ($correctResponsesSelect as $correctResponseSelect) {
-                echo "<option value='{$correctResponseSelect}'>{$correctResponseSelect}</option>";
-            } ?>
-        </select>
-  <button type="submit" >Poster l'énigme</button>
-  </form>
+  <button type="submit" class="btn btn-dark my-2">Ajouter l'énigme</button>
+</form>
 <?php
 include "footer.php";
 ?>

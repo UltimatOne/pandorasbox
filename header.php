@@ -3,7 +3,7 @@ session_start();
 include 'bddpass.php';
 try {
 
-    $db = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $userName, $pswrd,[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+    $db = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $pswrd,[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 } catch (Exception $e) {
 
     var_dump($e->getMessage());
