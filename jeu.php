@@ -14,7 +14,7 @@ if (isset($_GET["id"])) {
 };
 
 //récupère la liste d'énigmes depuis la bdd
-include 'getEnigmesFromBdd.php';
+include 'services/getEnigmesFromBdd.php';
 
 //Verifie le niveau de diffulté et set dans $difficulty le mot en francais
 if ($enigmes[$enigmeId]["enigme_difficulty"] == "easy") {
@@ -69,13 +69,13 @@ shuffle($buttons);
 //Verifie qu'un id existe, si oui affiche l'énigme correspondante depuis $enigmes sinon message d'erreur
 if (isset($enigmeId)) {
     $enigme = $enigmes[$enigmeId];
-    $contenu = "<div class='container w-25 d-flex flex-wrap justify-content-around bg-dark bg-opacity-75 text-white rounded-5 mb-4'>
+    $contenu = "<div class='container w-25 d-flex flex-wrap justify-content-around bg-dark bg-opacity-75 text-white rounded-5 my-4'>
                     <h1 class='text-center'>" . $enigme["enigme_title"] . "</h1>
                 </div>
                 <div class='container w-25 d-flex flex-wrap justify-content-center align-items-center mb-4 text-light'>
                     <h4 class='fw-bold bg-$color bg-opacity-75 rounded-5 p-2'>" . $difficulty . "</h4>
                 </div>
-                <div class='w-50 h-50 d-flex flex-column justify-content-around bg-dark bg-opacity-75 text-white mb-4 rounded-5'>
+                <div class='w-50 d-flex flex-column justify-content-around bg-dark bg-opacity-75 text-white mb-4 rounded-5'>
                     <div class='container-fluid d-flex justify-content-center align-items-center my-auto'>
                         <p class='m-auto text-center fs-5'>" . $enigme["enigme_description"] . "</p>
                     </div>
@@ -97,7 +97,7 @@ if (isset($enigmeId)) {
 if (isset($_GET["resp"]) && $_GET["resp"] == $enigmes[$enigmeId]['enigme_correctResponse']) {
     //incremente enigme_win de 1
     try {
-        //Bonne pratique permet de préparer l'envoi sans injection
+        //Bonne pratique permet de préparer l'envoi sans injection, envoi + 1 à win dans la bdd
         $count = "enigme_win = enigme_win + 1";
         $index = $enigmes[$enigmeId]['enigme_id'];
         $request = $db->prepare("UPDATE enigmes SET $count WHERE enigmes.enigme_id =  $index ");
@@ -114,7 +114,7 @@ if (isset($_GET["resp"]) && $_GET["resp"] == $enigmes[$enigmeId]['enigme_correct
 } else if (isset($_GET["resp"]) && $_GET["resp"] != $enigmes[$enigmeId]['enigme_correctResponse']) {
     //incremente enigme_lose de 1
     try {
-        //Bonne pratique permet de préparer l'envoi sans injection
+        //Bonne pratique permet de préparer l'envoi sans injection, envoi + 1 à lose dans la bdd
         $count = "enigme_lose = enigme_lose + 1";
         $index = $enigmes[$enigmeId]['enigme_id'];
         $request = $db->prepare("UPDATE enigmes SET $count WHERE enigmes.enigme_id =  $index ");
@@ -133,7 +133,7 @@ if (isset($_GET["resp"]) && $_GET["resp"] == $enigmes[$enigmeId]['enigme_correct
 };
 ?>
 
-<main class="d-flex flex-column justify-content-center align-items-center" style="background-image: url(<?= $background ?>); height: 94.2vh; position: relative;">
+<main class="d-flex flex-column justify-content-center align-items-center" style="background-image: url(<?= $background ?>); min-height: 94.2vh; position: relative;">
 
     <?php
     //Verifie qu'il y a bien une enigme dans contenu et l'affiche sinon affiche un message d'erreur

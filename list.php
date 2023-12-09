@@ -1,7 +1,6 @@
 <?php
-include 'HEADER.php';
-
-include 'getEnigmesFromBdd.php';
+include 'header.php';
+include 'services/getEnigmesFromBdd.php';
 
 ?>
 
@@ -14,7 +13,7 @@ include 'getEnigmesFromBdd.php';
 
   <a type="button" class="btn btn-success" href="list.php?filtre=easy" style="width: 18%">Facile</a>
   <a type="button" class="btn btn-primary" href="list.php?filtre=medium" style="width: 18%">Moyenne</a>
-  <a type="button" class="btn btn-warning" href="list.php?filtre=hard" style="width: 18%">Difficile</a>
+  <a type="button" class="btn btn-warning text-white " href="list.php?filtre=hard" style="width: 18%">Difficile</a>
   <a type="button" class="btn btn-danger" href="list.php?filtre=impossible" style="width: 18%">Père Fourras</a>
   <a type="button" class="btn btn-secondary" href="list.php">Toutes les difficultés</a>
 </div>
@@ -45,7 +44,7 @@ include 'getEnigmesFromBdd.php';
   ) {
     ?>
   
-    <div class="card mt-3" style="width: 24%;">
+    <div class="card my-3" style="width: 24%;">
       <div class="card-body d-flex flex-column">
         <h5 class="card-title text-center">
           <?= $enigme["enigme_title"] ?>
@@ -53,10 +52,10 @@ include 'getEnigmesFromBdd.php';
         <h6 class="card-subtitle my-2 bg-<?= $color ?> w-25 p-2 text-white fw-bold text-center rounded-2">
           <?= $difficulty ?>
         </h6>
-        <p class="card-text my-auto">
+        <p class="card-text my-2 h-100 d-flex justify-content-center">
           <?= $enigme["enigme_description"] ?>
         </p>
-        <a class="card-link text-end mt-auto"href="jeu.php?id=<?= $key ?>">Résoudre l'énigme</a>
+        <a class="btn btn-<?= $color ?> ms-auto my-3 w-50 text-white" href="jeu.php?id=<?= $key ?>">Résoudre l'énigme</a>
       </div>
     </div>
 

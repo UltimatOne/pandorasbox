@@ -1,25 +1,16 @@
 <?php
 session_start();
-include 'bddpass.php';
-try {
 
-    $db = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $pswrd,[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-} catch (Exception $e) {
-
-    var_dump($e->getMessage());
+if (!isset($_SESSION['user'])) {
+    $_SESSION['user'] = [];
 }
-
-// session_destroy();
-
-// if (!isset($_SESSION['enigmes'])){
-//    include 'mokSession.php';
-// }
+//Connection à la BDD
+include 'services/bddConnect.php';
 
 // var_dump($_SESSION);
 
 $msgSuccess = "";
 $msgAlert = "";
-
 
 ?>
 
@@ -34,30 +25,53 @@ $msgAlert = "";
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <header class="position-sticky top-0 z-3 bg-white border border-2 border-dark rounded-2">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.php">Pandora's Box</a>
+                <a class="navbar-brand btn btn-dark text-white" href="index.php">Pandora's Box</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="list.php">Liste des énigmes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="add.php">Ajouter une énigme</a>
+                            <a class="nav-link" href="list.php">Jeu</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="stats.php">Statistiques de jeu</a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="index.php?logout=true">Log out</a>
-                        </li> -->
+                        <?php if (isset($_SESSION["user"]) && !empty($_SESSION["user"])) { 
+                            $request = $db->prepare('SELECT `user_role` FROM users WHERE user_pseudo = ?');
+                            $request->execute([
+                                $_SESSION["user"]['pseudo']
+                            ]);
+                
+                            //fetch permet de récupérer une seule entrée, utilisé ici parceque la clef est unique (pseudo), pour une clé non unique on utilise fetchall
+                            $role = $request->fetch();
+
+                            //vérifie si l'utilisateur est un administrateur et affiche le lien vers la page si vrai
+                            if (isset($role) && $role['user_role'] === "administrator") {
+                            ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="add.php">Administration</a>
+                            </li>
+                            <?php }; ?>
+                            <li class="nav-item ms-auto">
+                                <span class="nav-link fw-bold me-5">Bonjour <?= $_SESSION['user']['pseudo'] ?></span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-secondary " href="index.php?logout=true">Déconnexion</a>
+                            </li>
+                        <?php } else { ?>
+
+                            <li class="nav-item ms-auto">
+                                <a class="btn btn-dark me-2" href="signIn.php">Connexion</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-light" href="signUp.php">Inscription</a>
+                            </li>
+
+                        <?php }; ?>
                     </ul>
                 </div>
             </div>
