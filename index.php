@@ -1,5 +1,5 @@
 <?php
-include 'header.php';
+include 'components/header.php';
 include 'services/logOut.php';
 include 'services/logIn.php';
 
@@ -26,6 +26,6 @@ include 'services/logIn.php';
 </main>
 
 <?php
-include 'box.php';
-include 'footer.php';
+include 'components/box.php';
+include 'components/footer.php';
 ?>

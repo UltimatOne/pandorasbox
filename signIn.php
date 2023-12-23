@@ -1,5 +1,5 @@
 <?php
-include 'header.php';
+include 'components/header.php';
 include 'services/connexionUserValid.php';
 
 ?>
@@ -19,6 +19,6 @@ include 'services/connexionUserValid.php';
 </form>
 
 <?php
-include 'box.php';
-include 'footer.php';
+include 'components/box.php';
+include 'components/footer.php';
 ?>

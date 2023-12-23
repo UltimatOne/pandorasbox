@@ -1,5 +1,5 @@
 <?php
-include 'header.php';
+include 'components/header.php';
 
 // var_dump($_GET['id']);
 // if(isset($_GET["resp"])){
@@ -142,7 +142,7 @@ if (isset($_GET["resp"]) && $_GET["resp"] == $enigmes[$enigmeId]['enigme_correct
         if (!empty($msgSuccess) or !empty($msgError)) {
             echo "<div class='bg-dark bg-opacity-50 d-flex justify-content-center align-items-center' style='position: absolute; z-index: 10; top: 0; bottom: 0; left: 0; right: 0;'>
                 <div class='w-25' style=''>";
-            include("box.php");
+            include "components/box.php";
             echo   "</div>
               </div>";
         }
@@ -150,7 +150,7 @@ if (isset($_GET["resp"]) && $_GET["resp"] == $enigmes[$enigmeId]['enigme_correct
         if (!empty($msgSuccess) or !empty($msgError)) {
             echo "<div class='bg-dark bg-opacity-50 d-flex justify-content-center align-items-center' style='position: absolute; z-index: 10; top: 0; bottom: 0; left: 0; right: 0;'>
                 <div class='w-25'>";
-            include("box.php");
+            include "components/box.php";
             echo   "</div>
             </div>";
         }
@@ -160,5 +160,5 @@ if (isset($_GET["resp"]) && $_GET["resp"] == $enigmes[$enigmeId]['enigme_correct
 </main>
 
 <?php
-include 'footer.php';
+include 'components/footer.php';
 ?>

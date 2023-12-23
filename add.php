@@ -1,5 +1,5 @@
 <?php
-include "header.php";
+include "components/header.php";
 include "services/connexionUserCheck.php";
 include 'services/addEnigmeIntoBdd.php';
 include 'services/userCreateValid.php';
@@ -99,6 +99,6 @@ include 'services/getCorrectResponsesSelectFromBdd.php';
   </section>
 </main>
 <?php
-include 'box.php';
-include "footer.php";
+include 'components/box.php';
+include "components/footer.php";
 ?>
