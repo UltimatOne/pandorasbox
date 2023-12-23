@@ -44,13 +44,8 @@ $msgAlert = "";
                             <a class="nav-link" href="stats.php">Statistiques de jeu</a>
                         </li>
                         <?php if (isset($_SESSION["user"]) && !empty($_SESSION["user"])) {
-                            $request = $db->prepare('SELECT `user_role` FROM users WHERE user_pseudo = ?');
-                            $request->execute([
-                                $_SESSION["user"]['pseudo']
-                            ]);
-
-                            //fetch permet de récupérer une seule entrée, utilisé ici parceque la clef est unique (pseudo), pour une clé non unique on utilise fetchall
-                            $role = $request->fetch();
+                            //Récupère le role de l'utilisateur
+                            include 'services/getUserRole.php';
 
                             //vérifie si l'utilisateur est un administrateur et affiche le lien vers la page si vrai
                             if (isset($role) && $role['user_role'] === "administrator") {

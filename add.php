@@ -4,11 +4,13 @@ include "services/connexionUserCheck.php";
 include 'services/addEnigmeIntoBdd.php';
 include 'services/userCreateValid.php';
 include 'services/getCorrectResponsesSelectFromBdd.php';
+
 ?>
 <main class="d-flex">
   <section class="w-50 d-flex flex-column justify-content-between">
     <h1 class="text-center">Ajout d'énigme</h1>
-    <form class="container w-50 bg-dark text-center mt-5 rounded-5 py-2 text-white fw-bold mb-2" action="" method="post">
+    <form class="container w-50 bg-dark text-center mt-5 rounded-5 py-2 text-white fw-bold mb-2" action=""
+      method="post">
       <div class="d-flex flex-column w-75 mx-auto">
         <label for="enigme_title">Titre de l'énigme</label>
         <input type="text" name="enigme_title">
@@ -58,7 +60,8 @@ include 'services/getCorrectResponsesSelectFromBdd.php';
   <Section class="w-50 d-flex flex-column justify-content-between ">
     <h1 class="text-center">Ajout d'utilisateur</h1>
 
-    <form action="" method="post" class="container w-50 bg-dark text-center mt-5 rounded-5 py-2 text-white fw-bold mb-2">
+    <form action="" method="post"
+      class="container w-50 bg-dark text-center mt-5 rounded-5 py-2 text-white fw-bold mb-2">
       <div class="d-flex flex-column w-75 mx-auto">
         <label for="user_role">Rôle</label>
         <select class="form-control" name="user_role">
