@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 if (isset($_POST['pseudo']) && isset($_POST['pswrd'])) {
     if (empty($_POST['pseudo']) || empty($_POST['pswrd'])) {
@@ -7,7 +7,8 @@ if (isset($_POST['pseudo']) && isset($_POST['pswrd'])) {
             if (empty($value)) {
                 $msgError .= "<br> -> $key";
             }
-        };
+        }
+        ;
         $msgError .= "</p>";
     } else {
         try {
@@ -20,15 +21,15 @@ if (isset($_POST['pseudo']) && isset($_POST['pswrd'])) {
             $user = $request->fetch();
 
             //vérification
-            if (!$user OR !password_verify($_POST['pswrd'], $user['user_pswrd'])) {
-                $msgError = "Email ou mot de passe incorrect";
+            if (!$user or !password_verify($_POST['pswrd'], $user['user_pswrd'])) {
+                $msgError = "Pseudo ou mot de passe incorrect";
 
             } else {
                 $_SESSION["user"] = [
-                    'fisrtname' => $user['user_firstname'],
                     'email' => $user["user_email"],
                     'pseudo' => $user["user_pseudo"]];
-            };
+            }
+            ;
 
             header("Location: index.php?login=true");
 
@@ -37,6 +38,7 @@ if (isset($_POST['pseudo']) && isset($_POST['pswrd'])) {
             $msgError = "La connexion a échouée";
         }
     }
-};
+}
+;
 
 ?>

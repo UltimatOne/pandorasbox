@@ -20,7 +20,8 @@ $msgAlert = "";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Pandora's Box</title>
 </head>
 
@@ -29,7 +30,9 @@ $msgAlert = "";
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand btn btn-dark text-white" href="index.php">Pandora's Box</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -40,24 +43,27 @@ $msgAlert = "";
                         <li class="nav-item">
                             <a class="nav-link" href="stats.php">Statistiques de jeu</a>
                         </li>
-                        <?php if (isset($_SESSION["user"]) && !empty($_SESSION["user"])) { 
+                        <?php if (isset($_SESSION["user"]) && !empty($_SESSION["user"])) {
                             $request = $db->prepare('SELECT `user_role` FROM users WHERE user_pseudo = ?');
                             $request->execute([
                                 $_SESSION["user"]['pseudo']
                             ]);
-                
+
                             //fetch permet de récupérer une seule entrée, utilisé ici parceque la clef est unique (pseudo), pour une clé non unique on utilise fetchall
                             $role = $request->fetch();
 
                             //vérifie si l'utilisateur est un administrateur et affiche le lien vers la page si vrai
                             if (isset($role) && $role['user_role'] === "administrator") {
-                            ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="add.php">Administration</a>
-                            </li>
-                            <?php }; ?>
+                                ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="add.php">Administration</a>
+                                </li>
+                            <?php }
+                            ; ?>
                             <li class="nav-item ms-auto">
-                                <span class="nav-link fw-bold me-5">Bonjour <?= $_SESSION['user']['pseudo'] ?></span>
+                                <span class="nav-link fw-bold me-5">Bonjour
+                                    <?= $_SESSION['user']['pseudo'] ?>
+                                </span>
                             </li>
                             <li class="nav-item">
                                 <a class="btn btn-secondary " href="index.php?logout=true">Déconnexion</a>
@@ -71,7 +77,8 @@ $msgAlert = "";
                                 <a class="btn btn-light" href="signUp.php">Inscription</a>
                             </li>
 
-                        <?php }; ?>
+                        <?php }
+                        ; ?>
                     </ul>
                 </div>
             </div>

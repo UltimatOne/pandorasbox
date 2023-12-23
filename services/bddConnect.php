@@ -1,4 +1,4 @@
-<?php 
+<?php
 //Infos de connection à la BDD
 include 'bddPass.php';
 
@@ -8,6 +8,7 @@ try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (Exception $e) {
     var_dump($e->getMessage());
-};
+}
+;
 
 ?>
