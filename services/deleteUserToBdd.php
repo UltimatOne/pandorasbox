@@ -1,10 +1,11 @@
 <?php
 
-if ( isset($_GET['supp']) && !empty($_GET['supp'])) {
+if (isset($_GET['suppUser']) && !empty($_GET['suppUser'])) {
     $request = $db->prepare('DELETE FROM users WHERE user_id = ?');
     $request->execute([
-      $_GET['supp']
+        $_GET['suppUser']
     ]);
-  }
-  
+    $msgSuccess = "L'utilisateur a bien été supprimé";
+}
+
 ?>

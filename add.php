@@ -5,12 +5,23 @@ include 'services/addEnigmeIntoBdd.php';
 include 'services/userCreateValid.php';
 include 'services/getCorrectResponsesSelectFromBdd.php';
 include 'services/deleteUserToBdd.php';
+include 'services/deleteEnigmeToBdd.php';
 // on doit afficher ceux dessus en dernier ou ce qui est affiché ne sera pas actualisé
 include 'services/getEnigmesFromBdd.php';
 include 'services/getUsersFromBdd.php';
 
 ?>
-<main class="d-flex justify-content-between">
+<main class="d-flex justify-content-between position-relative ">
+  <?php
+  if (!empty($msgSuccess) or !empty($msgError)) {
+    echo "<div class='bg-dark bg-opacity-50 d-flex flex-column justify-content-center align-items-center' style='position: absolute; z-index: 10; top: 0; bottom: 0; left: 0; right: 0;'>
+                <div class='w-25'>";
+    include "components/box.php";
+    echo "</div>
+    <a href='add.php' class='btn btn-success '>Terminé</a>
+            </div>";
+  }
+  ?>
   <section class="d-flex flex-column align-items-center " style='width: 45%;'>
     <h1 class="text-center">Énigmes</h1>
     <!-- $key = le numéro d'index (pas l'id) -->
@@ -22,8 +33,10 @@ include 'services/getUsersFromBdd.php';
         <p class='col'>
           <?= substr($enigme['enigme_description'], 0, 45) ?>...
         </p>
-        <a href="add.php?mod=<?=$enigme['enigme_id']?>" class='col btn btn-success'>Modifier</a>
-        <a href="add.php?supp=<?=$enigme['enigme_id']?>" class='col btn btn-danger'>Supprimer</a>
+        <div class="d-flex justify-content-evenly ">
+          <a href="add.php?mod=<?= $enigme['enigme_id'] ?>" class=' btn btn-success' style="width:40%">Modifier</a>
+          <a href="add.php?suppEnigme=<?= $enigme['enigme_id'] ?>" class=' btn btn-danger' style="width:40%">Supprimer</a>
+        </div>
       </div>
     <?php } ?>
     <h2>Ajouter une énigme</h2>
@@ -85,8 +98,13 @@ include 'services/getUsersFromBdd.php';
         <p class='col'>
           <?= $user['user_email'] ?>
         </p>
-        <a href="add.php?mod=<?=$user['user_id']?>" class='col btn btn-success'>Modifier</a>
-        <a href="add.php?supp=<?=$user['user_id']?>" class='col btn btn-danger'>Supprimer</a>
+        <p class='col'>
+          <?= $user['user_role'] ?>
+        </p>
+        <div class="d-flex justify-content-evenly ">
+          <a href="add.php?mod=<?= $user['user_id'] ?>" class='btn btn-success ' style="width:40%">Modifier</a>
+          <a href="add.php?suppUser=<?= $user['user_id'] ?>" class='btn btn-danger ' style="width:40%">Supprimer</a>
+        </div>
       </div>
     <?php } ?>
     <h2>Ajouter un utilisateur</h2>
@@ -129,6 +147,5 @@ include 'services/getUsersFromBdd.php';
   </section>
 </main>
 <?php
-include 'components/box.php';
 include "components/footer.php";
 ?>
