@@ -38,7 +38,7 @@ if (isset($_POST['enigme_title']) && isset($_POST['enigme_description'])) {
 
             $msgSuccess = "L'énigme {$title} a bien été ajouté";
         } catch (Exception $e) {
-            var_dump($e->getMessage());
+            // var_dump($e->getMessage());
             $msgError = "L'ajout de l'énigme a échoué";
         }
         ;

@@ -26,7 +26,7 @@ $msgAlert = "";
 </head>
 
 <body>
-    <header class="position-sticky top-0 z-3 bg-white border border-2 border-dark rounded-2">
+    <header class="position-sticky top-0 bg-white border border-2 border-dark rounded-2" style="z-index: 11;">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand btn btn-dark text-white" href="index.php">Pandora's Box</a>
