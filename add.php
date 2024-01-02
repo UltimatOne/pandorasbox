@@ -4,7 +4,9 @@ include "services/connexionUserCheck.php";
 include 'services/addEnigmeIntoBdd.php';
 include 'services/userCreateValid.php';
 include 'services/getCorrectResponsesSelectFromBdd.php';
+// on doit afficher ceux dessus en dernier ou ce qui est affiché ne sera pas actualisé
 include 'services/getEnigmesFromBdd.php';
+include 'services/getUsersFromBdd.php';
 
 ?>
 <main class="d-flex justify-content-between">
@@ -19,8 +21,8 @@ include 'services/getEnigmesFromBdd.php';
         <p class='col'>
           <?= substr($enigme['enigme_description'], 0, 45) ?>...
         </p>
-        <button class='col btn btn-success'>Modifier</button>
-        <button class='col btn btn-danger'>Supprimer</button>
+        <a href="add.php?mod=<?=$enigme['enigme_id']?>" class='col btn btn-success'>Modifier</a>
+        <a href="add.php?supp=<?=$enigme['enigme_id']?>" class='col btn btn-danger'>Supprimer</a>
       </div>
     <?php } ?>
     <h2>Ajouter une énigme</h2>
@@ -74,16 +76,16 @@ include 'services/getEnigmesFromBdd.php';
   </section>
   <section class="d-flex flex-column align-items-center " style='width: 45%;'>
     <h1 class="text-center">Utilisateurs</h1>
-    <?php foreach ($enigmes as $key => $enigme) { ?>
+    <?php foreach ($users as $key => $user) { ?>
       <div class='row bg-dark text-white justify-content-between py-1 gap-1 w-75 '>
         <p class='col'>
-          <?= $enigme['enigme_title'] ?>
+          <?= $user['user_pseudo'] ?>
         </p>
         <p class='col'>
-          <?= substr($enigme['enigme_description'], 0, 45) ?>...
+          <?= $user['user_email'] ?>
         </p>
-        <button class='col btn btn-success'>Modifier</button>
-        <button class='col btn btn-danger'>Supprimer</button>
+        <a href="add.php?mod=<?=$user['user_id']?>" class='col btn btn-success'>Modifier</a>
+        <a href="add.php?supp=<?=$user['user_id']?>" class='col btn btn-danger'>Supprimer</a>
       </div>
     <?php } ?>
     <h2>Ajouter un utilisateur</h2>
