@@ -6,6 +6,16 @@ include 'services/playerCreateValid.php';
 
 <h1 class="text-center">Inscription</h1>
 
+<?php
+if (!empty($msgSuccess) or !empty($msgError)) {
+    echo
+        "<div class='bg-dark bg-opacity-50 d-flex flex-column align-items-center' style='position: absolute; z-index: 10; top: 0; bottom: 0; left: 0; right: 0'>
+         <div class='w-25 mt-5'>";
+    include "components/box.php";
+    echo "</div><a href='signIn.php' class='btn btn-success '>Connexion</a></div>";
+}
+?>
+
 <form action="" method="post" class="d-flex flex-column mx-auto" style="width: 60%;">
     </div>
     <div class="mb-3">
@@ -37,6 +47,6 @@ include 'services/playerCreateValid.php';
 
 
 <?php
-include 'components/box.php';
+
 include 'components/footer.php';
 ?>

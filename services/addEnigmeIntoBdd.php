@@ -16,7 +16,8 @@ if (isset($_POST['enigme_title']) && isset($_POST['enigme_description'])) {
             if (empty($value)) {
                 $msgError .= "<br> -> $key";
             }
-        };
+        }
+        ;
         $msgError .= "</p>";
     } else {
         //Préparation des valeurs à envoyer
@@ -39,6 +40,7 @@ if (isset($_POST['enigme_title']) && isset($_POST['enigme_description'])) {
         } catch (Exception $e) {
             var_dump($e->getMessage());
             $msgError = "L'ajout de l'énigme a échoué";
-        };
+        }
+        ;
     }
 }

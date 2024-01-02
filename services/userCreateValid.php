@@ -4,7 +4,7 @@
 if (
     isset($_POST["user_role"]) &&
     isset($_POST["user_email"]) &&
-    isset($_POST["user_pswrd"]) 
+    isset($_POST["user_pswrd"])
 ) {
     if (empty($_POST["user_role"]) || empty($_POST["user_pseudo"]) || empty($_POST["user_email"]) || empty($_POST["user_pswrd"]) || empty($_POST["user_birthday"])) {
         $msgError = "<p>Merci de compléter les champs suivants:";
@@ -12,7 +12,8 @@ if (
             if (empty($value)) {
                 $msgError .= "<br> -> $key";
             }
-        };
+        }
+        ;
         $msgError .= "</p>";
     } else {
 
@@ -38,21 +39,16 @@ if (
             //Envoi
             $request->execute([$role, $firstname, $lastname, $pseudo, $email, $pswrdHash, $birthday]);
 
-            //creation de la session utilisateur
-            $_SESSION['user'] = [
-                'firstname' => $firstname,
-                'email' => $email,
-                'pseudo' => $pseudo
-            ];
-
-            //redirige vers la page index avec l'etat de connection
-            header('Location: index.php?login=true');
+            $msgSuccess = $pseudo . " a bien été ajouté ";
 
         } catch (Exception $e) {
             var_dump($e->getMessage());
             $msgError = "L'inscription a échouée";
-        };
-    };
-};
+        }
+        ;
+    }
+    ;
+}
+;
 
 ?>
