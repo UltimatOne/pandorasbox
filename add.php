@@ -4,6 +4,7 @@ include "services/connexionUserCheck.php";
 include 'services/addEnigmeIntoBdd.php';
 include 'services/userCreateValid.php';
 include 'services/getCorrectResponsesSelectFromBdd.php';
+include 'services/deleteUserToBdd.php';
 // on doit afficher ceux dessus en dernier ou ce qui est affiché ne sera pas actualisé
 include 'services/getEnigmesFromBdd.php';
 include 'services/getUsersFromBdd.php';
