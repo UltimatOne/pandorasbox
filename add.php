@@ -2,6 +2,7 @@
 include "components/header.php";
 include "services/connexionUserCheck.php";
 include 'services/addEnigmeIntoBdd.php';
+include 'services/modifEnigmeIntoBdd.php';
 include 'services/userCreateValid.php';
 include 'services/getCorrectResponsesSelectFromBdd.php';
 include 'services/deleteUserToBdd.php';
