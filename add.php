@@ -26,7 +26,7 @@ include 'services/getUsersFromBdd.php';
     <div class="d-flex flex-column align-items-center overflow-auto " style='height: 30vh;'>
       <!-- $key = le numéro d'index (pas l'id) -->
       <?php foreach ($enigmes as $key => $enigme) { ?>
-        <div class='row bg-dark text-white justify-content-between py-1 gap-1 w-75'>
+        <div class='row bg-dark text-white justify-content-between py-1 gap-1 w-100'>
           <p class='col'>
             <?= $enigme['enigme_title'] ?>
           </p>
@@ -92,7 +92,7 @@ include 'services/getUsersFromBdd.php';
     <h1 class="text-center">Utilisateurs</h1>
     <div class="d-flex flex-column align-items-center overflow-auto " style='height: 30vh;'>
       <?php foreach ($users as $key => $user) { ?>
-        <div class='row bg-dark text-white justify-content-between py-1 gap-1 w-75 '>
+        <div class='row bg-dark text-white justify-content-between py-1 gap-1 w-100'>
           <p class='col'>
             <?= $user['user_pseudo'] ?>
           </p>
