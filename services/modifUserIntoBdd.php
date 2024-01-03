@@ -2,7 +2,7 @@
 
 // Valide l'ajout d'un utilisateur à la tab users de la Bdd pandorasbox et set $_SESSION
 if (
-    !isset($_POST['modifUser']) &&
+    isset($_POST['modifUser']) &&
     isset($_POST["user_role"]) &&
     isset($_POST["user_email"]) &&
     isset($_POST["user_pswrd"])
@@ -19,6 +19,7 @@ if (
     } else {
 
         //Préparation des valeurs à envoyer
+        $id = $_POST["user_id"];
         $role = $_POST["user_role"];
         $firstname = empty($_POST["user_firstname"]) ? NULL : $_POST["user_firstname"];
         $lastname = empty($_POST["user_lastname"]) ? NULL : $_POST["user_lastname"];
@@ -30,20 +31,17 @@ if (
 
 
         try {
-            //Mauvaise pratique (sans contrôle permet d'injecter du code sql dans les inputs)
-            // $sql = "INSERT INTO users (user_firstname, user_email, user_pwd) VALUES ('$firstname','$email','$pwdHash')";
-            //$db->exec($sql);
 
             //Bonne pratique permet de préparer l'envoi sans injection
-            $request = $db->prepare("INSERT INTO users (user_role,user_firstname,user_lastname,user_pseudo,user_email,user_pswrd,user_birthday) VALUES (?,?,?,?,?,?,?)");
+            $request = $db->prepare("UPDATE users SET user_role = ?,user_firstname = ?,user_lastname = ?,user_pseudo = ?,user_email = ?,user_pswrd = ?,user_birthday = ? WHERE user_id = ?");
 
             //Envoi
-            $request->execute([$role, $firstname, $lastname, $pseudo, $email, $pswrdHash, $birthday]);
+            $request->execute([$role, $firstname, $lastname, $pseudo, $email, $pswrdHash, $birthday, $id]);
 
-            $msgSuccess = $pseudo . " a bien été ajouté ";
+            $msgSuccess = $pseudo . " a bien été modifié ";
 
         } catch (Exception $e) {
-            $msgError = "L'inscription a échouée";
+            $msgError = "La modification a échouée";
         }
         ;
     }

@@ -4,6 +4,7 @@ include "services/connexionUserCheck.php";
 include 'services/addEnigmeIntoBdd.php';
 include 'services/modifEnigmeIntoBdd.php';
 include 'services/userCreateValid.php';
+include 'services/modifUserIntoBdd.php';
 include 'services/getCorrectResponsesSelectFromBdd.php';
 include 'services/deleteUserToBdd.php';
 include 'services/deleteEnigmeToBdd.php';
@@ -27,7 +28,7 @@ include 'services/getUsersFromBdd.php';
     <div class="d-flex flex-column align-items-center overflow-auto " style="height: 45vh">
       <!-- $key = le numéro d'index (pas l'id) -->
       <?php foreach ($enigmes as $key => $enigme) { ?>
-        <div class='row bg-dark text-white justify-content-between py-1 gap-1 w-75 '>
+        <div class='row bg-dark text-white justify-content-between py-1 gap-1 w-100 '>
           <p class='col'>
             <?= $enigme['enigme_title'] ?>
           </p>
@@ -53,7 +54,7 @@ include 'services/getUsersFromBdd.php';
     <h1 class="text-center">Utilisateurs</h1>
     <div class="d-flex flex-column align-items-center overflow-auto " style="height: 45vh">
       <?php foreach ($users as $key => $user) { ?>
-        <div class='row bg-dark text-white justify-content-between py-1 gap-1 w-75 '>
+        <div class='row bg-dark text-white justify-content-between py-1 gap-1 w-100 '>
           <p class='col'>
             <?= $user['user_pseudo'] ?>
           </p>
@@ -64,14 +65,18 @@ include 'services/getUsersFromBdd.php';
             <?= $user['user_role'] ?>
           </p>
           <div class="d-flex justify-content-evenly ">
-            <a href="add.php?modUser=<?= $user['user_id'] ?>" class='btn btn-success ' style="width:40%">Modifier</a>
+            <a href="add.php?modUser=<?= $key ?>" class='btn btn-success ' style="width:40%">Modifier</a>
             <a href="add.php?suppUser=<?= $user['user_id'] ?>" class='btn btn-danger ' style="width:40%">Supprimer</a>
           </div>
         </div>
       <?php } ?>
     </div>
     <?php
-    include "components/adminFormAddUsers.php";
+    if (isset($_GET['modUser'])) {
+      include "components/adminFormModifUsers.php";
+    } else {
+      include "components/adminFormAddUsers.php";
+    }
     ?>
   </section>
 </main>
