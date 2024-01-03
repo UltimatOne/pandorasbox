@@ -40,12 +40,13 @@
             </div>
             <div class="d-flex flex-column w-75 mx-auto">
                 <label for="user_pswrd" class="form-label">mot de passe</label>
-                <input type="password" class="form-control" name="user_pswrd" value="<?= $user['user_pswrd'] ?>">
+                <input type="password" class="form-control" name="user_pswrd" value="">
             </div>
             <div class="d-flex flex-column w-75 mx-auto">
                 <label for="user_birthday" class="form-label">date de naissance</label>
                 <input type="date" class="form-control" name="user_birthday" value="<?= $user['user_birthday'] ?>">
             </div>
+            <a href="add.php" class="btn btn-danger my-2">Annuler</a>
             <button type="submit" class="btn btn-dark w-25 my-2">Envoyer</button>
         </form>
         <?php

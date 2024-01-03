@@ -75,11 +75,11 @@ if (isset($enigmeId)) {
                 <div class='container w-25 d-flex flex-wrap justify-content-center align-items-center mb-4 text-light'>
                     <h4 class='fw-bold bg-$color bg-opacity-75 rounded-5 p-2'>" . $difficulty . "</h4>
                 </div>
-                <div class='w-50 d-flex flex-column justify-content-around bg-dark bg-opacity-75 text-white mb-4 rounded-5'>
+                <div class='w-50 d-flex flex-column justify-content-around bg-dark bg-opacity-75 text-white mb-4 rounded-5' style='min-height: 40vh'>
                     <div class='container-fluid d-flex justify-content-center align-items-center my-auto'>
                         <p class='m-auto text-center fs-5'>" . $enigme["enigme_description"] . "</p>
                     </div>
-                    <div class='container-fluid d-flex w-50 m-auto justify-content-center align-items-center bg-light bg-opacity-75 text-dark mb-4 rounded-5'>
+                    <div class='container-fluid d-flex w-50 m-auto mt-4 justify-content-center align-items-center bg-light bg-opacity-75 text-dark mb-4 rounded-5'>
                         <p class='m-auto fs-4 fw-bold'>Choisissez une Réponse :</p>
                     </div>
                 </div>
@@ -133,7 +133,7 @@ if (isset($_GET["resp"]) && $_GET["resp"] == $enigmes[$enigmeId]['enigme_correct
 };
 ?>
 
-<main class="d-flex flex-column justify-content-center align-items-center" style="background-image: url(<?= $background ?>); min-height: 94.2vh; position: relative;">
+<main class="d-flex flex-column justify-content-center align-items-center" style="background-image: url(<?= $background ?>); min-height: 93.1vh; position: relative;">
 
     <?php
     //Verifie qu'il y a bien une enigme dans contenu et l'affiche sinon affiche un message d'erreur

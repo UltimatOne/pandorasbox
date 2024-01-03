@@ -55,6 +55,7 @@
             } ?>
         </select>
     </div>
+    <a href="add.php" class="btn btn-danger my-2">Annuler</a>
     <button type="submit" class="btn btn-dark my-2">Modifier l'énigme</button>
 </form>
 <?php 
