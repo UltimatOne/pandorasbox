@@ -4,6 +4,7 @@ include 'services/getEnigmesFromBdd.php';
 
 ?>
 
+ <main class="">
 <h1 style="text-align:center; margin:20px">Liste des énigmes</h1>
 
 <h3 style="text-align:center; margin: 20px ">Filtrer par niveaux de difficultés :</h3>
@@ -82,3 +83,4 @@ include 'services/getEnigmesFromBdd.php';
   </div>
 
 </div>
+</main>

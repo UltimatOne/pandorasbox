@@ -1,5 +1,5 @@
 <?php ?>
-<div class="card my-3">
+<div class="card my-3 ">
       <div class="card-body d-flex flex-column">
         <h5 class="card-title text-center">
           <?= $enigme["enigme_title"] ?>
